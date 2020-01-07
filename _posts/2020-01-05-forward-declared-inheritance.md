@@ -10,24 +10,24 @@ And there is a good reason behind this:
 the inherited type has to know many properties of the parent type, which information isn't available in this case.
 While this makes sense, there are a few corner cases when this "feature" could be useful - and a similar result can be achieved, with some workarounds.
 
-{% highlight cpp %}
+```cpp
 struct incomplete;
 struct foo : public incomplete { // compilation error
 };
-{% endhighlight %}
+```
 
 ## Why?
 
 A real world use case is when implementing some libraries/DSLs:
 all it needs is a library based on user types, and some of the logic depending on the complete type.
 
-{% highlight cpp %}
+```cpp
 #define dsl_sype(name) struct name: public dsl_base<name>
 // ...
 dsl_type(foo) { 
  // ...
 };
-{% endhighlight %}
+```
 
 A syntax like above works as long as dsl_base only accesses the properties of `name` inside it's methods, where its definition is already visible.
 Which doesn't allow for use cases where the contents of `dsl_base` changes based on what's inside `name`.
@@ -35,7 +35,7 @@ Which doesn't allow for use cases where the contents of `dsl_base` changes based
 A simple workaround is adding an additional using declaration at the end:
 
 
-{% highlight cpp %}
+```cpp
 template<typename T>
 struct dsl_wrap: public T { /* ... */ };
 // ...
@@ -46,7 +46,7 @@ dsl_type(foo) {
  // ...
 };
 dsl_end(foo);
-{% endhighlight %}
+```
 
 Unfortunately this requires additional changes from the user, it's no longer a single struct-like macro.
 
@@ -54,7 +54,7 @@ Unfortunately this requires additional changes from the user, it's no longer a s
 
 The issue can be solved by moving the using declaration before the type itself, as that could be hidden behind a single macro:
 
-{% highlight cpp %}
+```
 template<typename T>
 struct dsl_wrap: public T { 
   char data[sizeof(T)];  // or anything
@@ -68,7 +68,7 @@ struct dsl_wrap: public T {
 dsl_type(foo) { 
  // ...
 };
-{% endhighlight %}
+```
 
 This might seem strange after the first example showing the error, but this works, even if `dsl_wrap` depends on knowledge about `name`, such as in the example above.
 

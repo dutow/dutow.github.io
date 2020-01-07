@@ -13,13 +13,13 @@ Tuns out that I was wrong, and we had the ability to write stateful metaprograms
 
 Staying with the topic of my [previous post]({% post_url 2020-01-05-forward-declared-inheritance %}) and struct-like DSLs, given a struct definition like this:
 
-{% highlight cpp %}
+```cpp
 struct foo_struct {
   field(T1, a);
   field(T2, b);
   field(T3, b);
 };
-{% endhighlight %}
+```
 
 I want to be able to iterate over the fields.
 
@@ -42,7 +42,7 @@ I did some (standard) reading, and to my understanding, it's how it should work,
 
 That's how I stumbled upon [N3386], which mentions that the same idiom is possible since C++11, using `sizeof` instead of `decltype`, while arguing for allowing forward declaring `auto` functions:
 
-{% highlight cpp %}
+```cpp
 // gcc -std=c++11
 template<typename T2, size_t = sizeof(T2)>
 constexpr int f(int) { return 1; }
@@ -63,7 +63,7 @@ struct S{};
 // first it choosen using overload resolution
 constexpr auto b = f<S>(0); // 1
 static_assert(b == 1, "SFINAE success");
-{% endhighlight %}
+```
 
 As this is here for 9 years now, I don't see why it would be removed later.
 
@@ -76,7 +76,7 @@ This makes the (C++17) auto constexpr method superior, as it allows a state chan
 It also allows something even more powerful:
 forward linking!
 
-{% highlight cpp %}
+```cpp
 struct list_item_1 {
   friend auto next_link(list_item_1*);
 };
@@ -90,7 +90,7 @@ struct list_item_2 {
 
 static_assert(std::is_same_v<next_link(static_cast<list_item_1*>(nullptr),
                              list_item_2*>());
-{% endhighlight %}
+```
 
 * By declaring a friend taking a `list_item_1` parameter withi `list_item_1`, we ask the compiler to consider this overload using ADL.
 * By declaring it using `auto`, and providing the type later in `list_item_2`, we inject a new type into the ADL scope of `list_item_1`.
@@ -106,7 +106,7 @@ This is true most of the time, but also presents an issue for us, as we need tha
 The solution is simple enough:
 The `next_link` functions should be templates.
 
-{% highlight cpp %}
+```cpp
   template<typename Id>
   friend constexpr auto next_link(list_item_1*, Id) noexcept {
     return static_cast<list_item_2*>(nullptr);
@@ -114,7 +114,7 @@ The `next_link` functions should be templates.
 
   template<typename Id>
   friend constexpr auto next_link(list_item_2*, Id) noexcept;
-{% endhighlight %}
+```
 
 C++20 also would allow `template<auto Id = [](){}>`, but that currently only works in GCC, and even there, defaulting it isn't reliable.
 
@@ -133,17 +133,17 @@ In the use case showcased at the start, this starting point could be injected co
 
 To go with the second approach (only requiring a declaration), we can also define a simple template for the list head:
 
-{% highlight cpp %}
+```cpp
 template<typename T>
 struct list_head {
     template<typename Id>
     friend constexpr auto next_link(list_head*, Id) noexcept;
 };
-{% endhighlight %}
+```
 
 This way the list head acts just like a list item, making implementing the last item quite simple:
 
-{% highlight cpp %}
+```cpp
 template<typename T, typename Id>
 constexpr T list_last_or_this(float, T, Id);
 
@@ -157,7 +157,7 @@ template<typename L, typename Id>
 constexpr
 decltype(list_last_or_this(0, static_cast<list_head<L>*>(nullptr), Id{}))
 list_last(L, Id) { return nullptr; }
-{% endhighlight %}
+```
 
 The only tricky part is the `decltype(next_link)` in the second function, and that expression is why we can implement this:
 just like in the first `sizeof` example, this decltype results in a SFINAE substitution failure if `next_link` is declared, but not defined.
