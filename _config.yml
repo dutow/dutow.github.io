@@ -27,7 +27,7 @@ markdown: kramdown
 theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
-highlighter: none
+highlighter: rouge
 kramdown:
   syntax_highlighter_opts:
     disable: true
