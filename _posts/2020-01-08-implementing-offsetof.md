@@ -3,7 +3,6 @@ layout: post
 title:  "(Re)implementing offsetof"
 date:   2020-01-08 20:47:10 +0100
 excerpt_separator: <!--more-->
-categories: fancy-dsl
 ---
 
 C++ (and C) has a builtin macro called `offsetof`, which provides us with information about where a given type is located within the memory block of a struct or class.

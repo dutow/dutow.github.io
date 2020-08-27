@@ -3,7 +3,6 @@ layout: post
 title:  "Better static assert for numeric tests"
 date:   2020-03-05 15:54:50 +0100
 excerpt_separator: <!--more-->
-categories: fancy-dsl, tsar
 ---
 
 Using `consteval` instead of `constexpr` kind of solved my previous issue, but it didn't make the original issue go away:
@@ -146,6 +145,6 @@ With this, every value used in the computation is available as a direct or indir
 I'm quite sure that the above simple example can be improved: 
 other operators are easy to implement, and probably the syntax could be improved too - maybe with the use of some macros?
 
-[catch2]: https://godbolt.org/z/Ge5Bax
+[catch2]: https://github.com/catchorg/Catch2
 [godbolt]: https://godbolt.org/z/Unjkmd
 [tsar]: https://github.com/dutow/tsar

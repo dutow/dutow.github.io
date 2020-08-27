@@ -2,7 +2,6 @@
 layout: post
 title:  "Inheriting from forward declared types"
 date:   2020-01-05 17:02:06 +0100
-categories: fancy-dsl
 ---
 
 C++ (and usually, pragramming languages) doesn't allow inheriting from incomplete types.

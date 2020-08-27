@@ -3,7 +3,6 @@ layout: post
 title:  "The fantastic consteval"
 date:   2020-02-12 19:55:50 +0100
 excerpt_separator: <!--more-->
-categories: fancy-dsl
 ---
 
 The new `consteval` keyword in C++20 seemed like a nice, but not that important addition at first.

@@ -2,7 +2,6 @@
 layout: post
 title:  "Template state machine: automated lists"
 date:   2020-01-07 20:09:45 +0100
-categories: fancy-dsl
 ---
 
 Metaprogramming in C++ aims to be state free.
