@@ -1,8 +1,10 @@
-### Modernizing Postgres Communication with Hackorum
+### Don’t OIDC yourself in the foot
+
+Postgres 18’s New (O)Auth Explained
 
 <hr>
 <p>Zsolt Parragi · <a href="mailto:zsolt.parragi@percona.com">zsolt.parragi@percona.com</a></p>
-<p style="font-size: 0.7em;">PGConf.DE · April 22th, 2026 · Essen, Germany</p>
+<p style="font-size: 0.7em;">PGConf.DE · April 22nd, 2026 · Essen, Germany</p>
 
 ---
 
@@ -17,7 +19,7 @@
 ### Agenda
 
 * OIDC? Security? Convenience?
-* PostgreSQL and (vaidator) plugins
+* PostgreSQL and (validator) plugins
 * Minimal OIDC setup with PostgreSQL
 * Questions?
 
@@ -25,7 +27,7 @@
 ### Sorry for the long explanation...
 
 * But I hope it's not boring
-* This is an easy to use feature*
+* This is an easy to use feature
 * That is difficult to use correctly
 * Avoiding the "Let's simplify it for the demo" mentality
   * Ignoring security concerns for a security feature
@@ -61,11 +63,11 @@
 ### Which is better for us?
 OAuth
 
-If a user can supply an OAuth access token with the "pg-admin" scope, assign the admin role to him
+If a user can supply an OAuth access token with the "pg-admin" scope, assign the admin role
 
 OIDC
 
-If a user can log in with this provider, look up his role in pg_ident.conf based on his email address
+If a user can log in with this provider, look up their role in pg_ident.conf based on their email address
 
 
 --
@@ -87,7 +89,7 @@ If a user can log in with this provider, look up his role in pg_ident.conf based
 ### Client types
 
 * OAuth clients have an id and a secret (password)
-* Confidental clients: can store secrets securely
+* Confidential clients: can store secrets securely
 * Public clients: everything is visible for everyone
 
 --
@@ -103,7 +105,7 @@ If a user can log in with this provider, look up his role in pg_ident.conf based
 
 ### PostgreSQL is a ...
 
-* Confidental client
+* Confidential client
 * A public client with web authentication
 * A limited device public client
 * None of the above
@@ -136,6 +138,8 @@ If a user can log in with this provider, look up his role in pg_ident.conf based
 * Device flow is even worse
   * The "device" logging in, and the device authenticating it is different
   * Can be even on two different continents...
+
+--
 
 ### The dangers of laziness
 
@@ -220,7 +224,7 @@ host    all             all             127.0.0.1/32            oauth   issuer=i
 postgresql.conf:
 
 ```
-oauth_validator_libraries =pg_oidc_validator
+oauth_validator_libraries=pg_oidc_validator
 ```
 
 Connecting:
@@ -245,9 +249,9 @@ psql -h 127.0.0.1 'dbname=postgres oauth_issuer=issuer2_url oauth_client_id=pgcl
 
 ### Find me after the talk or online:
 
-**kai.wagner@percona.com** · [github.com/hackorum-dev/hackorum](https://github.com/hackorum-dev/hackorum)
+**zsolt.parragi@percona.com**
 
-*Slides: [https://imthekai.github.io/pgmeetup-berlin-march-2026/](https://imthekai.github.io/pgmeetup-berlin-march-2026/)*
+*Slides: [https://dutow.github.io/slides/pgconf-de-2026-oidc/](https://dutow.github.io/pgconf-de-2026-oidc/)*
 
 ---
 <img src="img/pgconf_de_2026_final.png" width="40%" height="40%" style="background:none; border:none; box-shadow:none;"><br> April 21-22 in Essen, Germany

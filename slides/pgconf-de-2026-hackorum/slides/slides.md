@@ -2,7 +2,7 @@
 
 <hr>
 <p>Zsolt Parragi · <a href="mailto:zsolt.parragi@percona.com">zsolt.parragi@percona.com</a></p>
-<p style="font-size: 0.7em;">PGConf.DE · April 22th, 2026 · Essen, Germany</p>
+<p style="font-size: 0.7em;">PGConf.DE · April 22, 2026 · Essen, Germany</p>
 
 ---
 
@@ -187,9 +187,9 @@ There is a massive difference between a "working demo" and a UI that actually ha
 
 ### Find me after the talk or online:
 
-**kai.wagner@percona.com** · [github.com/hackorum-dev/hackorum](https://github.com/hackorum-dev/hackorum)
+**zsolt.parragi@percona.com** · [github.com/hackorum-dev/hackorum](https://github.com/hackorum-dev/hackorum)
 
-*Slides: [https://imthekai.github.io/pgmeetup-berlin-march-2026/](https://imthekai.github.io/pgmeetup-berlin-march-2026/)*
+*Slides: [https://dutow.github.io/slides/pgconf-de-2026-hackorum/](https://dutow.github.io/slides/pgconf-de-2026-hackorum/)*
 
 ---
 <img src="img/pgconf_de_2026_final.png" width="40%" height="40%" style="background:none; border:none; box-shadow:none;"><br> April 21-22 in Essen, Germany
