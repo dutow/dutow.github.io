@@ -3,14 +3,21 @@ layout: default
 ---
 <article>
   <div class="container">
-    <header class="post-head">
-      <div style="display: flex; gap: 8px; margin-bottom: 18px">
-        {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+    <header class="post-head{% if page.image %} post-head--with-image{% endif %}">
+      {% if page.image %}
+      <div class="post-head__image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}"/>
       </div>
-      <h1 class="post-head__title">{{ page.title }}</h1>
-      {% if page.excerpt %}<p class="post-head__sub">{{ page.excerpt }}</p>{% endif %}
-      <div class="post-head__meta">
-        <span class="mono" style="color: var(--fg-2)">{{ page.date | date: "%B %-d, %Y" }}</span>
+      {% endif %}
+      <div class="post-head__text">
+        <div style="display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap">
+          {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+        <h1 class="post-head__title">{{ page.title }}</h1>
+        {% if page.excerpt %}<p class="post-head__sub">{{ page.excerpt | strip_html | strip_newlines }}</p>{% endif %}
+        <div class="post-head__meta">
+          <span class="mono" style="color: var(--fg-2)">{{ page.date | date: "%B %-d, %Y" }}</span>
+        </div>
       </div>
     </header>
 
@@ -22,6 +29,21 @@ layout: default
         {{ content }}
       </div>
     </div>
+
+    {% if content contains 'language-mermaid' %}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+      document.querySelectorAll('pre code.language-mermaid').forEach((el) => {
+        const pre = el.parentElement;
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = el.textContent;
+        pre.replaceWith(div);
+      });
+      mermaid.run();
+    </script>
+    {% endif %}
 
     <nav class="prev-next">
       {% if page.previous %}
