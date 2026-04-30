@@ -1,0 +1,16 @@
+{% assign chunks = page.content | split: '<h2 id="' %}
+{% if chunks.size > 1 %}
+  <div class="post-toc__head">// contents</div>
+  <ol class="post-toc__list">
+  {% for chunk in chunks offset: 1 %}
+    {% assign id = chunk | split: '"' | first %}
+    {% assign heading = chunk | split: '</h2>' | first %}
+    {% assign label = heading | split: '">' | last | strip_html %}
+    {% assign idx = forloop.index %}
+    <li class="post-toc__item">
+      <span class="post-toc__num">{{ idx | prepend: '00' | slice: -2, 2 }}</span>
+      <a href="#{{ id }}" style="color: var(--fg-2)">{{ label }}</a>
+    </li>
+  {% endfor %}
+  </ol>
+{% endif %}

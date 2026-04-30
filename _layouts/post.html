@@ -1,5 +1,41 @@
 ---
 layout: default
 ---
-      <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-{{ content }}
+<article>
+  <div class="container">
+    <header class="post-head">
+      <div style="display: flex; gap: 8px; margin-bottom: 18px">
+        {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+      <h1 class="post-head__title">{{ page.title }}</h1>
+      {% if page.excerpt %}<p class="post-head__sub">{{ page.excerpt }}</p>{% endif %}
+      <div class="post-head__meta">
+        <span class="mono" style="color: var(--fg-2)">{{ page.date | date: "%B %-d, %Y" }}</span>
+      </div>
+    </header>
+
+    <div class="post-layout">
+      <aside class="post-toc">
+        {% include toc.html %}
+      </aside>
+      <div class="post-body">
+        {{ content }}
+      </div>
+    </div>
+
+    <nav class="prev-next">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="prev-next__card">
+          <div class="prev-next__label">← previous</div>
+          <div class="prev-next__title">{{ page.previous.title }}</div>
+        </a>
+      {% else %}<div></div>{% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="prev-next__card prev-next__card--next">
+          <div class="prev-next__label">next →</div>
+          <div class="prev-next__title">{{ page.next.title }}</div>
+        </a>
+      {% else %}<div></div>{% endif %}
+    </nav>
+  </div>
+</article>

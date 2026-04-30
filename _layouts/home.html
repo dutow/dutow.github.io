@@ -1,4 +1,131 @@
 ---
 layout: default
 ---
+<section class="hero">
+  <div class="container">
+    <div class="hero__crumb">
+      <span class="hero__crumb__tilde">~/</span> {{ site.url | replace: "https://", "" }} <span class="dimmer">·</span> est. 2008 <span class="dimmer">·</span> {{ site.posts.size }} entries logged
+    </div>
+    <h1 class="hero__title">
+      <span style="color: var(--accent)">mental</span><span style="color: var(--fg-4)">·</span><span>static</span><span class="caret"></span>
+    </h1>
+    <p class="hero__sub">
+      <span class="serif" style="font-style: italic; color: var(--fg-1)">{{ site.tagline }}</span>
+      <span style="color: var(--fg-3)"> — notes by </span>
+      <span style="color: var(--fg-1)">{{ site.author.name }}</span>
+      <span style="color: var(--fg-3)"> on C++, Postgres, and the noise that makes them go fast.</span>
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__label">POSTS</div>
+        <div class="stat__value">{{ site.posts.size }}</div>
+        <div class="stat__hint">since 2008</div>
+      </div>
+      <div class="stat">
+        <div class="stat__label">TALKS</div>
+        <div class="stat__value">{{ site.data.talks.size | default: 0 }}</div>
+        <div class="stat__hint">across conferences</div>
+      </div>
+      <div class="stat">
+        <div class="stat__label">PROJECTS</div>
+        <div class="stat__value">{{ site.data.projects.size | default: 0 }}</div>
+        <div class="stat__hint">open source</div>
+      </div>
+      <div class="stat">
+        <div class="stat__label">POSTGRES</div>
+        <div class="stat__value">{{ site.data.stats.postgres }}</div>
+        <div class="stat__hint">{{ site.data.stats.postgres_hint }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 0">
+  <div class="container">
+    <div class="cols">
+      <div>
+        <div class="section-h">
+          <h2 class="section-h__title">recent posts</h2>
+          <a href="{{ '/blog/' | relative_url }}" class="section-h__more mono">all {{ site.posts.size }} →</a>
+        </div>
+        <ul class="col-list">
+          {% for post in site.posts limit: 8 %}
+            <li>
+              <a href="{{ post.url | relative_url }}" class="post-row lift">
+                <span class="post-row__date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                <span>
+                  <span class="post-row__title">{{ post.title }}</span>
+                  <span class="post-row__tags">
+                    {% for t in post.tags %}{% unless forloop.first %} <span style="color: var(--fg-4)">·</span> {% endunless %}#{{ t }}{% endfor %}
+                  </span>
+                </span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <div class="section-h">
+          <h2 class="section-h__title">talks</h2>
+          <a href="{{ '/presentations/' | relative_url }}" class="section-h__more mono">all →</a>
+        </div>
+        <ul class="col-list">
+          {% for t in site.data.talks limit: 5 %}
+            <li>
+              <a href="{{ '/presentations/' | relative_url }}" class="talk-row lift">
+                <div class="talk-row__venue">
+                  <span class="talk-row__venue__abbr">{{ t.venue | split: ' ' | first }}</span>
+                  <span class="talk-row__venue__date">{{ t.date | date: "%Y.%m" }}</span>
+                </div>
+                <div class="talk-row__title">{{ t.title }}</div>
+                <div class="talk-row__meta">{{ t.venue }} · {{ t.city }} · {{ t.length }}</div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <div class="section-h">
+          <h2 class="section-h__title">projects</h2>
+          <a href="{{ '/projects/' | relative_url }}" class="section-h__more mono">all →</a>
+        </div>
+        <ul class="col-list">
+          {% for p in site.data.projects limit: 5 %}
+            <li>
+              <a href="{{ p.url }}" class="proj-row lift">
+                <div class="proj-row__head">
+                  <span class="proj-row__name">{{ p.name }}</span>
+                  <span class="proj-row__status proj-row__status--{{ p.status }}">● {{ p.status }}</span>
+                </div>
+                <div class="proj-row__tagline">{{ p.tagline }}</div>
+                <div class="proj-row__meta">
+                  <span>{{ p.lang }}</span><span class="dimmer">·</span><span>★ {{ p.stars }}</span>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 {{ content }}
+
+<section style="padding: 32px 0 64px">
+  <div class="container">
+    <div class="now">
+      <div class="now__head">
+        <span class="now__head__label">▌ /now</span>
+        <span class="now__head__updated">updated {{ site.time | date: "%b %Y" }}</span>
+      </div>
+      <div class="now__body">
+        {% capture now_md %}{% include now.md %}{% endcapture %}
+        {{ now_md | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>

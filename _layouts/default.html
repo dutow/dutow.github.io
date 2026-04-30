@@ -1,51 +1,24 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<!doctype html>
+<html lang="en">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158317336-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-158317336-1');
-  </script>
-  <meta charset="utf-8">
-  <title>{{ page.title }} | Mental Static</title>
-  <meta name="author" content="Zsolt Parragi <zsolt.parragi@cancellar.hu">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/skeleton.css">
-  <link rel="stylesheet" href="/css/site.css">
-  <link rel="icon" type="image/png" href="images/favicon.png">
-
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/github.min.css">
-  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Geist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&display=swap"/>
+  <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}"/>
+  {% feed_meta %}
+  {% seo %}
 </head>
 <body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-  <div class="navbar">
-    <ul class="navbar-list">
-      <li class=navbar-item"><a href="/">Blog</a></li>
-      <li class=navbar-item"><a href="/about/">About</a></li>
-      <li class=navbar-item"><a href="/presentations/">Presentations</a></li>
-      <li class=navbar-item"><a href="https://github.com/dutow">Github</a></li>
-    </ul>
+  <div class="site-bg"></div>
+  <div class="app">
+    {% include header.html %}
+    <main style="flex: 1">
+      {{ content }}
+    </main>
+    {% include footer.html %}
   </div>
-  <div class="navbar-spacer"></div>
-
-  <div class="container">
-        {{ content }}
-  </div>
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>

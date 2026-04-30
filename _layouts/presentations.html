@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<div style="padding: 80px 0">
+  <div class="container">
+    <div class="hero__crumb"><span class="hero__crumb__tilde">~/</span> presentations</div>
+    <h1 class="blog-head__title" style="margin-top: 16px">Talks &amp; conferences.</h1>
+    <p class="blog-head__lead" style="max-width: 640px; margin-bottom: 64px">
+      {{ site.data.talks.size | default: 0 }} talks since 2025. Slides linked where I have them; videos linked where the conferences post them.
+    </p>
+
+    <div class="section-h" style="margin-bottom: 0">
+      <h2 class="section-h__title">all talks</h2>
+      <span class="mono dim" style="font-size: 11px">{{ site.data.talks.size | default: 0 }} entries</span>
+    </div>
+
+    <div class="talks-list">
+      {% for t in site.data.talks %}
+        <article class="talks-card lift">
+          <div class="talks-card__idx">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</div>
+          <div>
+            <div class="talks-card__venue-row">
+              <span class="talks-card__venue">{{ t.venue }}</span>
+              <span class="dimmer">·</span>
+              <span class="talks-card__city">{{ t.city }}</span>
+              <span class="talks-card__date">{{ t.date | date: "%Y.%m.%d" }}</span>
+            </div>
+            <h3 class="talks-card__title">{{ t.title }}</h3>
+            <div class="talks-card__meta">
+              <span class="mono dim">▸ {{ t.length }}</span>
+              {% if t.slides_url %}<span class="dimmer">·</span><a href="{{ t.slides_url }}" class="mono">[ slides ]</a>{% endif %}
+              {% if t.video_url %}<span class="dimmer">·</span><a href="{{ t.video_url }}" class="mono">[ video ]</a>{% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>

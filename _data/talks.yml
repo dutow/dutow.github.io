@@ -1,0 +1,28 @@
+- venue: "PGConf.DE 2026"
+  city: "Essen, Germany"
+  date: 2026-04-22
+  title: "Modernizing Postgres Communication with Hackorum"
+  length: "50 min"
+  slides_url: "/slides/pgconf-de-2026-hackorum/"
+
+- venue: "PGConf.DE 2026"
+  city: "Essen, Germany"
+  date: 2026-04-22
+  title: "Don't OIDC yourself in the foot — Postgres 18's New OAuth Explained"
+  length: "50 min"
+  slides_url: "/slides/pgconf-de-2026-oidc/"
+
+- venue: "Percona Webinar"
+  city: "online"
+  date: 2026-04-07
+  title: "Modernizing Postgres Communication with Hackorum"
+  length: "75 min"
+  video_url: "https://www.youtube.com/watch?v=onQQJzQ8Qlw"
+
+- venue: "PGConf.EU 2025"
+  city: "Riga, Latvia"
+  date: 2025-10-23
+  title: "Transparent Data Encryption in PostgreSQL"
+  length: "50 min"
+  slides_url: "/slides/pgconf-eu-2025-tde.pdf"
+  video_url: "https://www.youtube.com/watch?v=G9kS4fgjhkw"

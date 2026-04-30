@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  install:
+    desc: Install Ruby gem dependencies
+    cmds:
+      - bundle install
+
+  build:
+    desc: Build the site to _site/
+    cmds:
+      - bundle exec jekyll build
+
+  serve:
+    desc: Run a dev server bound to all interfaces (port 4000) with live reload
+    cmds:
+      - bundle exec jekyll serve --host 0.0.0.0 --livereload --drafts
+
+  prod:
+    desc: Production build (JEKYLL_ENV=production) — same path GH Actions uses
+    cmds:
+      - JEKYLL_ENV=production bundle exec jekyll build
+
+  clean:
+    desc: Remove _site/ and the Jekyll cache
+    cmds:
+      - rm -rf _site .jekyll-cache .jekyll-metadata

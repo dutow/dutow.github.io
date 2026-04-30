@@ -1,0 +1,35 @@
+{% assign p = page.url %}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="{{ '/' | relative_url }}" class="logo">
+      <span class="logo__stack">
+        <span class="logo__line">
+          <span class="logo__bracket">[</span>
+          <span class="logo__main">mental</span>
+          <span class="logo__dot">·</span>
+          <span class="logo__main">static</span>
+          <span class="logo__bracket">]</span>
+          <span class="dot" style="margin-left: 10px"></span>
+        </span>
+        <span class="logo__by">by zsolt parragi</span>
+      </span>
+    </a>
+    <nav class="nav">
+      {% assign items = "home,/|blog,/blog/|presentations,/presentations/|projects,/projects/|about,/about/" | split: "|" %}
+      {% for raw in items %}
+        {% assign parts = raw | split: "," %}
+        {% assign label = parts[0] %}
+        {% assign href = parts[1] %}
+        {% assign active = false %}
+        {% if href == "/" and p == "/" %}{% assign active = true %}{% endif %}
+        {% if href != "/" and p contains href %}{% assign active = true %}{% endif %}
+        <a href="{{ href | relative_url }}" class="nav__link{% if active %} nav__link--active{% endif %}">
+          <span class="nav__link__caret">{% if active %}›{% else %} {% endif %}</span>{{ label }}
+        </a>
+      {% endfor %}
+      <a href="{{ site.social.github }}" target="_blank" rel="noreferrer" class="nav__link">
+        <span class="nav__link__caret"> </span>github<span style="color: var(--fg-4); margin-left: 4px; font-size: 9px">↗</span>
+      </a>
+    </nav>
+  </div>
+</header>

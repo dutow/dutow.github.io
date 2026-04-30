@@ -1,0 +1,29 @@
+- when: "2017 – present"
+  role: "software engineer"
+  where: "Percona"
+  body: "Database internals work — MySQL through 2023, PostgreSQL since."
+  tags: ["c", "c++", "postgres", "mysql", "databases"]
+
+- when: "2005 – 2023"
+  role: "freelance software developer"
+  where: "Cancellar"
+  body: "My own company with a few friends, run alongside the day jobs. Web hosting and development, with two main clients: Famillio Investment Ltd (insurance broker) and V-TÁV R&D Ltd (GPS-based location services — custom embedded devices and the surrounding network and software infrastructure)."
+  tags: ["php", "ruby", "c++", "mysql", "postgres", "embedded"]
+
+- when: "2017"
+  role: "chief software architect"
+  where: "Ignite Technologies"
+  body: "Working on ObjectStore."
+  tags: ["c++"]
+
+- when: "2015 – 2017"
+  role: "software engineer"
+  where: "NNG"
+  body: "Worked on the iGO UI engine — the rendering and interaction layer behind the navigation product."
+  tags: ["c++", "embedded", "ui"]
+
+- when: "2008 – 2010"
+  role: "software engineer"
+  where: "National AudioVisual Archive"
+  body: "Hungary's national audiovisual archive."
+  tags: ["xml", "java"]

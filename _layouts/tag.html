@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<div style="padding: 80px 0 80px">
+  <div class="container">
+    <div class="hero__crumb">
+      <span class="hero__crumb__tilde">~/</span> blog / tag / <span style="color: var(--accent)">#{{ page.title }}</span>
+    </div>
+    <h1 class="blog-head__title" style="margin-top: 16px">#{{ page.title }}</h1>
+    <p class="blog-head__lead">
+      {{ page.posts.size }} {% if page.posts.size == 1 %}post{% else %}posts{% endif %} tagged <code class="inline">{{ page.title }}</code>. <a href="{{ '/blog/' | relative_url }}" style="color: var(--accent); border-bottom: 1px dashed">← all posts</a>
+    </p>
+
+    <div style="margin-top: 56px">
+      {% assign by_year = page.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+      {% for group in by_year %}
+        <div class="year-group">
+          <div class="year-group__label">
+            <span class="year-group__year">{{ group.name }}</span>
+            <span class="year-group__count">{{ group.items.size }}</span>
+          </div>
+          <div>
+            {% for p in group.items %}
+              <a href="{{ p.url | relative_url }}" class="blog-card lift">
+                <div class="blog-card__meta">
+                  <span class="mono tnum" style="color: var(--fg-3); font-size: 12px">{{ p.date | date: "%B %-d, %Y" }}</span>
+                  <span style="flex: 1"></span>
+                  <span style="display: inline-flex; gap: 6px">
+                    {% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+                  </span>
+                </div>
+                <h3 class="blog-card__title">{{ p.title }}</h3>
+                {% if p.excerpt %}<p class="blog-card__excerpt">{{ p.excerpt | strip_html }}</p>{% endif %}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

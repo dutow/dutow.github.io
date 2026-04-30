@@ -1,0 +1,63 @@
+# _data/projects.yml
+- name: "Hackorum"
+  url: "https://hackorum.dev"
+  status: "active"
+  tagline: "A new frontend for the PostgreSQL mailing lists, shaped like a forum."
+  lang: "Ruby"
+  stars: 10
+
+- name: "stormweaver"
+  url: "https://github.com/percona-lab/stormweaver"
+  status: "active"
+  tagline: "Database fuzzy/stress testing tool, currently for PostgreSQL."
+  lang: "C++"
+  stars: 1
+
+- name: "brewiew"
+  url: "https://github.com/dutow/brewiew"
+  status: "experimental"
+  tagline: "Local code review extension for VSCode — helper for the PostgreSQL hackers list and LLM workflows."
+  lang: "TypeScript"
+  stars: 0
+
+- name: "pg_oidc_validator"
+  url: "https://github.com/percona/pg_oidc_validator"
+  status: "active"
+  tagline: "OIDC validator library for PostgreSQL 18+."
+  lang: "C++"
+  stars: 26
+
+- name: "pg_tde"
+  url: "https://github.com/percona/pg_tde"
+  status: "active"
+  tagline: "Transparent data encryption for PostgreSQL."
+  lang: "C"
+  stars: 206
+
+- name: "coredumper"
+  url: "https://github.com/percona-lab/coredumper"
+  status: "maintenance"
+  tagline: "Fork of Google's coredumper, kept usable. Not really my work — just keeping the lights on."
+  lang: "C"
+  stars: 43
+
+- name: "typegrind"
+  url: "https://github.com/typegrind"
+  status: "abandoned"
+  tagline: "Type-preserving heap profiler for C++. Considering a resurrection on different principles."
+  lang: "C++"
+  stars: 4
+
+- name: "tsar"
+  url: "https://github.com/dutow/tsar"
+  status: "abandoned"
+  tagline: "Context-aware tuples for C++20."
+  lang: "C++"
+  stars: 1
+
+- name: "redmine_gitolite"
+  url: "https://github.com/dutow/redmine_gitolite"
+  status: "abandoned"
+  tagline: "Gitolite integration for Redmine."
+  lang: "Ruby"
+  stars: 7

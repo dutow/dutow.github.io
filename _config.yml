@@ -1,41 +1,60 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+title: "mental·static"
+tagline: "a positive interference"
+description: "Notes by Zsolt Parragi on C++, Postgres, and the noise that makes them go fast."
+url: "https://mentalstatic.info"
+author:
+  name: "Zsolt Parragi"
+  email: "dutow@mentalstatic.info"
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Mental Static
-email: zsolt.parragi@cancellar.hu
-description: >- # this means to ignore newlines until "baseurl:"
-  about://programming
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "http://dutow.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: dutow
-github_username:  dutow
+social:
+  github: "https://github.com/dutow"
+  rss: "/feed.xml"
 
-# Build settings
+about:
+  role: "software engineer · research enthusiast"
+  bio: |
+    I build database guts and related software in **C++** and **Postgres**, and I write here when something has shaped up enough to share.
+  chips:
+    - "c"
+    - "c++"
+    - "postgres"
+    - "metaprogramming"
+    - "benchmarking"
+    - "ai / llm"
+    - "performance"
+
+permalink: "/blog/:slug/"
+
 markdown: kramdown
-theme: jekyll-theme-midnight
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+
 plugins:
   - jekyll-feed
-highlighter: rouge
-kramdown:
-  syntax_highlighter_opts:
-    disable: true
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-archives
 
-# Exclude from processing.
+jekyll-archives:
+  enabled:
+    - tags
+  layouts:
+    tag: tag
+  permalinks:
+    tag: "/blog/tag/:name/"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
 exclude:
+  - docs
   - Gemfile
   - Gemfile.lock
-  - mise.toml
-  - .ruby-version
-  - vendor/
+  - README.md
+  - vendor
+  - node_modules

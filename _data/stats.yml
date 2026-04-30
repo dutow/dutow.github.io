@@ -1,0 +1,4 @@
+postgres: "19"
+postgres_hint: "patches: 9"
+postgres_label: "POSTGRES"
+postgres_value_label: "PG"

@@ -1,0 +1,74 @@
+---
+layout: default
+---
+<div style="padding: 80px 0">
+  <div class="container">
+
+    <div class="about-hero">
+      <div>
+        <div class="hero__crumb"><span class="hero__crumb__tilde">~/</span> about</div>
+        <h1 class="about-hero__title">{{ site.author.name }}.</h1>
+        <div class="about-hero__role">{{ site.about.role }}</div>
+        <div class="about-hero__lead">{{ site.about.bio | markdownify }}</div>
+        <div class="about-hero__chips">
+          {% for c in site.about.chips %}<span class="tag">{{ c }}</span>{% endfor %}
+        </div>
+        <div class="about-hero__links">
+          <a href="#cv" class="btn">read the cv ↓</a>
+          <a href="mailto:{{ site.author.email }}" class="btn btn--primary">{{ site.author.email }}</a>
+        </div>
+      </div>
+      <div class="about-portrait">
+        <img src="{{ '/assets/img/portrait.png' | relative_url }}" alt="{{ site.author.name }}"/>
+        <div class="about-portrait__tag"><span style="color: var(--accent)">img://</span> self_portrait.001</div>
+      </div>
+    </div>
+
+    <section id="cv" class="cv-section">
+      <div class="section-h">
+        <h2 class="section-h__title">curriculum vitae</h2>
+        <span class="section-h__more">/ in reverse-chronological order</span>
+      </div>
+      <div>
+        {% for r in site.data.cv %}
+          <div class="cv-row">
+            <div class="cv-row__when">{{ r.when }}</div>
+            <div>
+              <div style="margin-bottom: 8px">
+                <span class="cv-row__role">{{ r.role }}</span>
+                <span class="mono dimmer" style="font-size: 11px"> at </span>
+                <span class="cv-row__where">{{ r.where }}</span>
+              </div>
+              <p class="cv-row__text">{{ r.body }}</p>
+              <div class="cv-row__tags">{% for t in r.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="name-section">
+      <div class="section-h">
+        <h2 class="section-h__title">on the name</h2>
+      </div>
+      <div class="name-grid">
+        <div style="max-width: 640px">
+          <p class="name-quote">Mental static feels like a steady buzz behind your eyes.</p>
+          <p class="name-body">
+            Thoughts drifting and weaving, returning a little brighter, a little stranger; a restless, sparkling flow pulling you from one idea to the next, where the chaos doesn&rsquo;t overwhelm, it hums—alive, playful, your mind chasing small flashes of something that might just turn into magic.
+          </p>
+          <div class="name-foot">
+            <span class="name-foot__note">// note:</span>
+            the name is just a Neon Genesis Evangelion reference that has stuck with me since the early 2000s.
+            TV/radio interference, the mixing of channels,
+            the way we tune in from one to another &mdash; a good metaphor for how I think and jump from one topic to another,
+            even when they seem unrelated from the outside.
+            Nowadays the term is unfortunately used to describe stress or mental fatigue, but I stick with my positive definition &mdash; this is my superpower!
+          </div>
+        </div>
+        <div>{% include ms-art.html %}</div>
+      </div>
+    </section>
+
+  </div>
+</div>

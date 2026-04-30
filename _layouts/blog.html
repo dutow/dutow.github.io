@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<div style="padding: 80px 0 80px">
+  <div class="container">
+    <div class="blog-head">
+      <div>
+        <div class="hero__crumb"><span class="hero__crumb__tilde">~/</span> blog</div>
+        <h1 class="blog-head__title">The log.</h1>
+        <p class="blog-head__lead">
+          {{ site.posts.size }} {% if site.posts.size == 1 %}entry{% else %}entries{% endif %} since 2020, sorted newest first. Mostly C++ and Postgres, sometimes the awkward intersection.
+        </p>
+      </div>
+      <div>
+        <div class="upper dim mono" style="font-size: 10px; letter-spacing: 0.16em; margin-bottom: 10px">filter // tag</div>
+        <div class="tag-filters" id="tag-filters">
+          <button class="tag-btn tag-btn--active" data-tag="*">★ all</button>
+          {% assign tags = site.tags | sort %}
+          {% for t in tags %}
+            <button class="tag-btn" data-tag="{{ t[0] }}">#{{ t[0] }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 56px" id="post-list">
+      {% assign by_year = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+      {% for group in by_year %}
+        <div class="year-group">
+          <div class="year-group__label">
+            <span class="year-group__year">{{ group.name }}</span>
+            <span class="year-group__count">{{ group.items.size }} {% if group.items.size == 1 %}post{% else %}posts{% endif %}</span>
+          </div>
+          <div>
+            {% for p in group.items %}
+              <a href="{{ p.url | relative_url }}" class="blog-card lift" data-tags="{{ p.tags | join: ',' }}">
+                <div class="blog-card__meta">
+                  <span class="mono tnum" style="color: var(--fg-3); font-size: 12px">{{ p.date | date: "%B %-d, %Y" }}</span>
+                  <span style="flex: 1"></span>
+                  <span style="display: inline-flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end">
+                    {% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+                  </span>
+                </div>
+                <h3 class="blog-card__title">{{ p.title }}</h3>
+                {% if p.excerpt %}<p class="blog-card__excerpt">{{ p.excerpt | strip_html }}</p>{% endif %}
+                <div class="blog-card__cta">read →</div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/blog-filter.js' | relative_url }}" defer></script>

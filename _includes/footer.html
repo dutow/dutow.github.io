@@ -1,0 +1,23 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <div class="upper dim mono site-footer__head">// session</div>
+        <pre class="site-footer__terminal"><div class="prompt">$ uname -a</div><div class="out">mental-static 6.1 #2026 dawn x86_64 GNU/Linux</div><div class="prompt">$ whoami</div><div class="out">{{ site.author.name | downcase }} — engineer who writes about C++, postgres, and the strange places they meet</div><div class="prompt">$ exit</div></pre>
+      </div>
+      <div>
+        <div class="upper dim mono site-footer__head">// elsewhere</div>
+        <ul class="site-footer__list">
+          <li><a href="{{ site.social.github }}" class="mono">{{ site.social.github | replace: "https://", "" }}</a></li>
+          <li><a href="{{ site.social.rss | relative_url }}" class="mono">rss.xml</a></li>
+          <li><a href="mailto:{{ site.author.email }}" class="mono">{{ site.author.email }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span class="mono dimmer">© 2008–{{ site.time | date: "%Y" }} — mental·static</span>
+      <span class="mono dimmer">content licensed <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a></span>
+      <span class="mono dimmer">{{ site.tagline }}</span>
+    </div>
+  </div>
+</footer>
