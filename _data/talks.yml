@@ -1,3 +1,19 @@
+- venue: "Percona Live 2026"
+  city: "Amsterdam, Netherlands"
+  date: 2026-09-11
+  title: "Following the Token: A Practical Guide to OAuth in PostgreSQL"
+  length: "30 min"
+  slides_url: "/slides/perconalive-2026-oidc/oidc_talk_plam2026.pdf"
+  source_url: "https://github.com/dutow/dutow.github.io/tree/master/slides/perconalive-2026-oidc"
+  video_url: "https://perconalive.com/2026-amsterdam/talks/following-the-token-a-practical-guide-to-oauth-in-postgresql/"
+
+- venue: "Percona Live 2026"
+  city: "Amsterdam, Netherlands"
+  date: 2026-09-10
+  title: 'The many meanings of "responsible" - Using AI well in an Open Source world'
+  length: "60 min panel"
+  video_url: "https://perconalive.com/2026-amsterdam/talks/the-many-meanings-of-responsible-using-ai-well-in-an-open-source-world/"
+
 - venue: "PGConf.DE 2026"
   city: "Essen, Germany"
   date: 2026-04-22

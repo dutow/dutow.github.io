@@ -1,0 +1,119 @@
+\mode<presentation>
+
+\DeclareOptionBeamer{titlepage}{\def\beamer@titlepage{#1}}
+
+\setbeamertemplate{title page}{default}{}
+
+% Itemize items, plmce-2016
+\setbeamertemplate{items}[circle]
+
+\setbeamertemplate{itemize item}{\raise0.1pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subitem}{\raise0.1pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subsubitem}[square]
+
+%\setbeamertemplate{section in toc}
+%{\leavevmode{\raise0.5pt\hbox{\textcolor{pl-2020titlegreen}\textbullet}}\inserttocsection\par}
+
+\setbeamertemplate{itemize/enumerate body begin}{\usebeamerfont{itemize item}}
+\setbeamertemplate{itemize/enumerate subbody begin}{\usebeamerfont{itemize subitem}}
+
+% Title page
+%\setbeamercolor{background canvas}{bg=white}
+\defbeamertemplate*{title page}{percona-2026}[1][percona-2026blue]
+{
+    %\begin{textblock*}{\paperwidth}(0\paperwidth,0\paperheight)
+        %    {\includegraphics[width=\paperwidth,keepaspectratio]{plam2026_title.jpg}}
+    %\end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(0\paperwidth,0\paperheight)
+        {\includegraphics[width=\paperwidth,keepaspectratio]{plam2026_title.jpg}}
+    \end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(0\paperwidth,0\paperheight)
+    \begin{tikzpicture}[overlay, remember picture]
+      \begin{scope}[shift={(current page.north west)}] 
+          \draw[fill=percona-2026black,percona-2026black] (0.078\paperwidth,0\paperheight) -- (\paperwidth,0\paperheight) -- (0.675\paperwidth,-1\paperheight) -- (0\paperwidth,-1\paperheight) -- (0\paperwidth,-0.245\paperheight) -- cycle;
+          \draw[fill=percona-2026yellow,percona-2026yellow] (0\paperwidth,0\paperheight) -- (0.078\paperwidth,0\paperheight) -- (0\paperwidth,-0.245\paperheight) -- cycle;
+
+          \draw[fill=#1,#1] (0.341\paperwidth,-0.666\paperheight) -- (0.374\paperwidth,-0.698\paperheight) -- (0.341\paperwidth,-0.729\paperheight) -- cycle;
+          \draw[fill=percona-2026black,percona-2026black] (0.345\paperwidth,-0.675\paperheight) -- (0.368\paperwidth,-0.698\paperheight) -- (0.345\paperwidth,-0.720\paperheight) -- cycle;
+      \end{scope}
+    \end{tikzpicture}
+    \end{textblock*}
+
+	    \begin{textblock*}{0.48\paperwidth}(0.32\paperwidth,0.125\paperheight)
+	        \begin{beamercolorbox}{title page header}
+	            \usebeamerfont{title}\inserttitle\hfill%
+	        \end{beamercolorbox}%
+	    \end{textblock*}
+
+    \begin{textblock*}{0.353\paperwidth}(0.38\paperwidth,0.64\paperheight)
+    	\begin{beamercolorbox}{author}
+            {\usebeamerfont{author}\insertauthor}\hfill\par\usebeamerfont{institute}\insertinstitute\hfill\par\usebeamerfont{date}\insertdate\hfill%
+    	\end{beamercolorbox}%
+    \end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(0.06\paperwidth,0.222\paperheight)
+        {\includegraphics[width=0.222\paperwidth,keepaspectratio]{plam2026_logo_slide.png}}
+    \end{textblock*}
+}
+
+% Section page
+\defbeamertemplate*{section page}{percona-2026}[1][percona-2026blue]
+{
+	\begin{textblock*}{\paperwidth}(0\paperwidth,0\paperheight)
+		{\includegraphics[height=1\paperheight,keepaspectratio]{goat1.jpg}}
+	\end{textblock*}
+
+	\begin{textblock*}{\paperwidth}(0pt,0pt)
+		\tikz[remember picture,overlay] {%
+			\draw[fill=percona-2026black,percona-2026black] (0.922\paperwidth,0\paperheight) -- (1\paperwidth,0\paperheight) -- (\paperwidth,-0.245\paperheight) -- cycle;
+			}
+	\end{textblock*}
+
+	\begin{textblock*}{\paperwidth}(0pt,0pt)
+		\tikz[remember picture,overlay] {%
+			\draw[fill=#1,#1] (0.25\paperwidth,0\paperheight) -- (0.575\paperwidth,-1\paperheight) -- (0\paperwidth,-1\paperheight) -- (0,0) -- cycle;
+			}
+	\end{textblock*}
+
+        \begin{textblock*}{\paperwidth}(0.790\paperwidth,0.87\paperheight)
+            {\includegraphics[width=0.18\paperwidth,keepaspectratio]{percona_one_color_light.png}}
+        \end{textblock*}
+
+	\begin{textblock*}{0.412\paperwidth}(0.042\paperwidth,0.55\paperheight)
+		\begin{beamercolorbox}{section}
+			\vfill
+			\usebeamerfont{section title}\insertsection\hfill%
+		\end{beamercolorbox}%
+	\end{textblock*}
+}
+
+% Not defined yet, just template
+\iffalse
+% Subsection page
+\defbeamertemplate*{subsection page}{percona-2026}[1][]
+{
+	\begin{textblock*}{\paperwidth}(0\paperwidth,0\paperheight)
+		{\includegraphics[height=1\paperheight,keepaspectratio]{image7.png}}
+	\end{textblock*}
+
+	    \begin{textblock*}{0.51\paperwidth}(0.167\paperwidth,0.46\paperheight)
+	            \begin{beamercolorbox}{subsection}
+	                    \usebeamerfont{subsection title}\insertsubsection\hfill%
+	            \end{beamercolorbox}%
+	    \end{textblock*}
+}
+\fi
+
+%change frame style
+%see /usr/share/texmf/tex/latex/beamer/beamerbaseframe.sty for example
+\define@key{beamerframe}{c}[true]{% centered
+	\beamer@frametopskip=0.15\paperheight plus 1fill\relax%
+	\beamer@framebottomskip=0.5cm plus 1.5fill\relax%
+%	\beamer@frametopskipautobreak=0pt plus .4\paperheight\relax%
+%	\beamer@framebottomskipautobreak=0pt plus .6\paperheight\relax%
+%	\def\beamer@initfirstlineunskip{}%
+}
+
+\mode<all>

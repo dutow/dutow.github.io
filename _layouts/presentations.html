@@ -29,6 +29,7 @@ layout: default
             <div class="talks-card__meta">
               <span class="mono dim">▸ {{ t.length }}</span>
               {% if t.slides_url %}<span class="dimmer">·</span><a href="{{ t.slides_url }}" class="mono">[ slides ]</a>{% endif %}
+              {% if t.source_url %}<span class="dimmer">·</span><a href="{{ t.source_url }}" class="mono">[ source ]</a>{% endif %}
               {% if t.video_url %}<span class="dimmer">·</span><a href="{{ t.video_url }}" class="mono">[ video ]</a>{% endif %}
             </div>
           </div>

@@ -1,0 +1,56 @@
+\mode<presentation>
+
+
+% Frame title
+\defbeamertemplate*{frametitle}{percona-2026}[1][percona-2026blue] {
+	\begin{textblock*}{\paperwidth}(0pt,0pt)
+		\tikz[remember picture,overlay] {%
+            \draw[fill=#1,#1] (0\paperwidth,-0.76\paperheight) -- (0.07\paperwidth,-1\paperheight) -- (0\paperwidth,-1\paperheight) -- cycle;
+		}
+    \end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(0.85\paperwidth,0\paperheight)
+        {\includegraphics[width=0.18\paperwidth,keepaspectratio]{plam2026_slide.png}}
+    \end{textblock*}
+
+    \begin{tikzpicture}[overlay, remember picture]
+      \begin{scope}[shift={(current page.north west)}] 
+          \draw[fill=#1,#1] (0.021\paperwidth,-0.128\paperheight) -- (0.054\paperwidth,-0.160\paperheight) -- (0.021\paperwidth,-0.191\paperheight) -- cycle;
+          \draw[fill=percona-2026black,percona-2026black] (0.025\paperwidth,-0.137\paperheight) -- (0.048\paperwidth,-0.160\paperheight) -- (0.025\paperwidth,-0.182\paperheight) -- cycle;
+      \end{scope}
+    \end{tikzpicture}
+
+	\begin{textblock*}{0.98\paperwidth}(0.06\paperwidth,0.12\paperheight)
+		\begin{beamercolorbox}[left, wd=0.98\paperwidth]{frametitle}
+			\usebeamerfont{title in head/foot}\insertframetitle
+		\end{beamercolorbox}%
+	\end{textblock*}
+}
+
+\defbeamertemplate*{footline}{percona-2026}[1][] {
+
+    \ifnum \insertpagenumber=1
+    \else
+        \begin{textblock*}{\paperwidth}(0.85\paperwidth,0.7\paperheight)
+            {\includegraphics[width=0.1\paperwidth,keepaspectratio]{plam2026_logo_slide.png}}
+        \end{textblock*}
+
+        \begin{textblock*}{\paperwidth}(0.025\paperwidth,0.95\paperheight)
+                \begin{beamercolorbox}{framenumber}
+                        \usebeamerfont{framenumber}\insertpagenumber%
+                \end{beamercolorbox}%
+        \end{textblock*}
+
+        \begin{textblock*}{\paperwidth}(0.85\paperwidth,0.95\paperheight)
+            \begin{beamercolorbox}{copyright}
+                \usebeamerfont{copyright}\textcopyright~\the\year~Percona
+            \end{beamercolorbox}%
+        \end{textblock*}
+
+        \vskip0.3in%
+    \fi
+}
+
+%\setbeamersize{text margin left=0.02\paperwidth,text margin right=0.093\paperwidth}
+
+\mode<all>

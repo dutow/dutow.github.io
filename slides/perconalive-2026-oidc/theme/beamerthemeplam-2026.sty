@@ -1,0 +1,41 @@
+%This is 16x9 template
+%You need to include it as
+%\documentclass[aspectratio=169,<options>]{beamer}
+
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\usepackage{pgfplots}
+\usepackage{moreverb}
+\usepackage{fancyvrb}
+\usepackage{hyperref}
+
+\usetikzlibrary{positioning,calc}
+
+\usepackage[absolute,overlay]{textpos}
+
+\graphicspath{{./plam-2026_images}}
+
+% Settings
+\DeclareOptionBeamer{titlepage}{\PassOptionsToPackage{titlepage=#1}{beamertheme-inner}}
+\ProcessOptionsBeamer
+
+\usefonttheme{percona-2026}
+\usefonttheme{plam-2026}
+\usecolortheme{percona-2026}
+\usecolortheme{plam-2026}
+\useinnertheme{plam-2026}
+\useoutertheme{plam-2026}
+
+\setbeamertemplate{navigation symbols}{}
+
+%Custom commands
+\input{percona_2026_common_commands}
+
+\AtBeginSection{
+    \frame[plain]{\sectionpage}
+}
+\AtBeginSubsection{\frame[plain]{\subsectionpage}}
+
+\mode<all>
