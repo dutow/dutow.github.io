@@ -1,1 +1,1 @@
-Focusing on bugfixes for PostgreSQL
+Playing with zig, comptime and JIT
