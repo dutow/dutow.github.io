@@ -517,6 +517,6 @@ On Tue, 07 Jul 2026, Tristan Partin wrote:
 
 **zsolt.parragi@percona.com**
 
-*Slides: [https://dutow.github.io/slides/pgconf-eu-2026-config/](https://dutow.github.io/pgconf-eu-2026-config/)*
+*Slides: [https://dutow.github.io/slides/pgconf-eu-2026-config/](https://dutow.github.io/slides/pgconf-eu-2026-config/)*
 
 <img src="img/qr-code.png" class="r-stretch">
