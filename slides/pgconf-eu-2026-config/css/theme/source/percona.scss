@@ -1,0 +1,142 @@
+/**
+ * A simple theme using the Percona colors and logo
+ *
+ * This theme is Copyright (C) 2022 Kai Wagner, https://github.com/capri1989. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Chivo:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Chivo', sans-serif;
+$mainColor: #3C3C3C;
+$headingFont: 'Chivo', Impact, sans-serif;
+$headingColor: #3C3C3C;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #fff;
+$linkColor: #E97E03;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color(#fff);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Add Percona logo to all slides
+.reveal-viewport {
+    background-image: url(/img/logo.png);
+    background-size: 10%;
+    background-repeat: no-repeat;
+    background-position: 96% 96%;
+}
+
+// Light code blocks instead of the dark default
+.reveal pre {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+// Inline code: subtle tint, no full block styling
+.reveal :not(pre) > code {
+    background: #f1f1ee;
+    border: 1px solid #e0e0dc;
+    border-radius: 3px;
+    padding: 0.05em 0.3em;
+    color: #3C3C3C;
+}
+
+// Line up bullet lists with the code blocks: pre is 90% wide and centered,
+// so its text starts at 5% + the 5px padding on pre code. Lists were
+// inline-block, so their left edge moved around with the content width.
+.reveal ul,
+.reveal ol {
+    display: block;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 5px;
+}
+
+// On the li, not the ul: the theme sets list-style-type on ul ul and ul ul ul,
+// and those beat a plain ul rule. Set on the item it wins at every depth,
+// because a direct declaration always beats an inherited one.
+.reveal li {
+    padding-left: 1.2em;
+    list-style: none;
+}
+
+// Markers are pulled back out of the padding, so they sit on the left edge
+// and wrapped lines stay lined up with the text above them.
+.reveal li::before {
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    content: "\2022";
+}
+
+// Sub-bullets hang under the text of their parent, not one more step right
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+    width: auto;
+    margin: 0;
+    padding-left: 0;
+}
+
+.reveal ul ul > li::before {
+    content: "\25AA";
+}
+
+.reveal ul ul ul > li::before {
+    content: "\25E6";
+}
+
+.reveal ol {
+    counter-reset: ol-counter;
+}
+
+.reveal ol > li {
+    counter-increment: ol-counter;
+}
+
+.reveal ol > li::before {
+    width: auto;
+    min-width: 1.2em;
+    margin-left: -1.2em;
+    content: counter(ol-counter) ".";
+}
+
+// Slides with long single-line bullets: the hanging indent costs ~11% of the
+// text width compared to the old shrink-to-fit lists, so give them a bit back.
+.reveal section.compact ul,
+.reveal section.compact ol {
+    font-size: 0.8em;
+}
+
+// Footnotes: hairline above, lined up with the code blocks and bullet lists
+.reveal .footnote {
+    box-sizing: border-box;
+    width: 90%;
+    margin: 0.8em auto 0;
+    padding: 0.4em 0 0 5px;
+    border-top: 1px solid #e0e0dc;
+    font-size: 0.55em;
+    line-height: 1.3;
+    text-align: left;
+    color: #6b6b6b;
+}
+
+.reveal .footnote sup {
+    margin-right: 0.2em;
+}
