@@ -140,19 +140,21 @@ host      all             all            all              reject
 --
 ## What happened?
 
-* We got used to it
-
-> It could be better, but it works
-
---
-## What happened?
-
-* "One more feature"
+* *One more feature*
    * groups, SSL, CIDR, IPv6, regular expressions, lists
    * options for complex methods, such as ldap
    * line continuations
    * includes, both file-level and cell-level
    * with PG19 OAuth validators can add their own options
+
+--
+## What happened?
+
+* We got used to it
+
+> It could be better, but it works
+
+> We just generate it with scripts
 
 --
 ## include_dir in hba?
@@ -413,7 +415,7 @@ On Tue, 07 Jul 2026, Tristan Partin wrote:
 * postgresql.conf / hba / ident / hosts
 
 --
-## Unify all the things
+## Unify everything
 
 * postgresql.json
 * "hba", "hosts", "idents" are objects
@@ -425,17 +427,17 @@ On Tue, 07 Jul 2026, Tristan Partin wrote:
 
 ```
 {
-  shared_buffers = '2GB',
-  max_wal_size = '16GB',
+  shared_buffers: '2GB',
+  max_wal_size: '16GB',
 
-  hosts = {
-    '*' = { ca = 'foo.ca', cert = 'foo.crt', key = 'foo.key' },
-    'other.host' = { cert = 'foo2.crt', key = 'foo2.key' },
+  hosts: {
+    '*': { ca: 'foo.ca', cert: 'foo.crt', key: 'foo.key' },
+    'other.host': { cert: 'foo2.crt', key: 'foo2.key' },
   },
-  hba = {
-    children = [
-      { auth = { method = 'trust', address: '127.0.0.1/32' },
-      { auth = { method = 'scram-sha-256' },
+  hba: {
+    children: [
+      { auth: { method: 'trust', address: '127.0.0.1/32' },
+      { auth: { method: 'scram-sha-256' },
     ]
   }
 }
@@ -446,8 +448,8 @@ On Tue, 07 Jul 2026, Tristan Partin wrote:
 
 ```
 {
-  shared_buffers = '2GB',
-  max_wal_size = '16GB',
+  shared_buffers: '2GB',
+  max_wal_size: '16GB',
 
   import: "tenants/*.json"
 }
@@ -455,16 +457,16 @@ On Tue, 07 Jul 2026, Tristan Partin wrote:
 ```
 // tenants/X.json
 { 
-  hosts = {
-    'tenant.tld' = { ca = 'tenantX.ca', cert = 'tenantX.crt', key = 'tenantX.key' 
-      settings = {
-        log_filename = 'where/to/log/this/tenant.log'
+  hosts: {
+    'tenant.tld': { ca: 'tenantX.ca', cert: 'tenantX.crt', key: 'tenantX.key' 
+      settings: {
+        log_filename: 'where/to/log/this/tenant.log'
       }
     },
   },
-  hba = {
-    children = [
-      { auth = { db = 'tenantX', method = 'oauth', ... },
+  hba: {
+    children: [
+      { auth: { db: 'tenantX', method: 'oauth', ... },
     ]
   }
 }
@@ -474,8 +476,8 @@ On Tue, 07 Jul 2026, Tristan Partin wrote:
 ## import *.json
 
 * We can only import at the top level
-* Multiple files define the same object = merge
-* Multiple files define the same value = error
+* Multiple files define the same object: merge
+* Multiple files define the same value: error
 
 --
 ## arrays
