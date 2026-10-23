@@ -8,13 +8,21 @@ for Seasoned Pros and New Starters with Hackorum
 
 ---
 
-## Who am I?
+### Who am I?
 
 * **Zsolt Parragi** · Software Engineer at Percona
   * since 2017
   * 5 years MySQL
   * later PostgreSQL
   * https://hackorum.dev
+
+--
+
+### Making testing easier for users
+
+ > I had great fun playing with the query syntax for SQL/PQG, but never tried to dump and reload a property graph. By the time problems with SQL/PQG and the catalog emerged, they were too big to fix on beta and the feature got reverted. Maybe if someone (and it could have been me) had tried out the boring bits earlier, the feature list would look different.
+
+ Alastair Turner https://lnkd.in/p/ergUiHPp
 
 ---
 
@@ -62,7 +70,7 @@ for Seasoned Pros and New Starters with Hackorum
 
 --
 
-## Get Involved
+### Get Involved
 
 * **Use it:** [hackorum.dev](https://hackorum.dev)
 * **Code:** [github.com/hackorum-dev/hackorum](https://github.com/hackorum-dev/hackorum)
